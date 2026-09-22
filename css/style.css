@@ -13,9 +13,9 @@
     --color-neutral-white: #ffffff;  /* Branco Puro: Fundo de cards, campos e blocos isolados */
     
     --color-feedback-sucesso: #28a745; /* Verde Sucesso Nativo: Estados de validação positiva */
-	--color-feedback-sucesso-fundo: #f6fff6;
+    --color-feedback-sucesso-fundo: #f6fff6;
     --color-feedback-error: #dc3545; /* Vermelho Erro: Alertas e campos inválidos */
-	--color-feedback-errorfundo: #fff8f8;
+    --color-feedback-errorfundo: #fff8f8;
 
     /* 2. ESCALA TIPOGRÁFICA (5 níveis hierárquicos baseados em rem) */
     --font-size-h1: 2.000rem;        /* 32px - Título principal da página */
@@ -32,7 +32,7 @@
     --spacing-xl: 2.500rem;          /* 40px  - Margem de distanciamento entre seções macro */
 }
 
-/*= RESET E CONFIGURAÇÕES GERAIS (LARGURA FIXA E CONSISTENTE) =*/
+/*= RESET E CONFIGURAÇÕES GERAIS =*/
 * {
     margin: 0;
     padding: 0;
@@ -42,14 +42,38 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #333333;
-    background-color: #f8f9fa; /* Fundo cinza bem claro para realçar as caixas */
+    color: var(--color-neutral-dark);
+    background-color: var(--color-neutral-light);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/*= DEFINIÇÕES PADRÕES GERAIS =*/
+/* [ACESSIBILIDADE] Link de Salto (Escondido visualmente, visível no Tab) */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 20px;
+    background-color: var(--color-primary-dark);
+    color: var(--color-neutral-white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 0 0 4px 4px;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 999;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* [ACESSIBILIDADE] Indicador visual global de foco por teclado */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 3px solid var(--color-primary-main);
+    outline-offset: 2px;
+}
+
 main {                         
     max-width: 1000px;
     width: 100%;
@@ -58,14 +82,19 @@ main {
     flex: 1;
 }
 
-/*= CONTAINER DO HEADER RECONFIGURADO =*/
+/* [ACESSIBILIDADE] Remove o outline padrão ao focar no container via JS, mantendo a navegação limpa */
+main:focus {
+    outline: none;
+}
+
+/*= CONTAINER DO HEADER =*/
 header {
-    background-color: #ffffff;
-    border-bottom: 3px solid #8fc19e; 
+    background-color: var(--color-neutral-white);
+    border-bottom: 3px solid var(--color-secondary-main); 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     padding: 15px 20px;
     width: 100%;
-    position: relative; /* Garante ancoragem para o menu absoluto no mobile */
+    position: relative; 
     z-index: 100;
 }
 
@@ -83,25 +112,23 @@ header img {
     height: auto;
 }
 
-/* Oculta o checkbox de controle por padrão no Desktop */
-.menu-checkbox {
-    display: none;
-}
-
-/* Oculta o ícone de hambúrguer por padrão no Desktop */
+/* Oculta o botão de hambúrguer por padrão no Desktop */
 .menu-hamburger {
     display: none;
+    background: none;
+    border: none;
     cursor: pointer;
     flex-direction: column;
     gap: 5px;
     width: 30px;
+    padding: 5px;
 }
 
 .menu-hamburger span {
     display: block;
     height: 4px;
     width: 100%;
-    background-color: #1a4473;
+    background-color: var(--color-primary-dark);
     border-radius: 2px;
     transition: all 0.3s ease;
 }
@@ -114,20 +141,20 @@ header img {
 }
 
 .menu-principal > li {
-    position: relative; /* Âncora posicional para o dropdown absoluto */
+    position: relative; 
     padding: 10px 0;
 }
 
 .menu-principal li a {
     text-decoration: none;
-    color: #1a4473;
+    color: var(--color-primary-dark);
     font-weight: 600;
     font-size: var(--font-size-body);
     transition: color 0.3s ease;
 }
 
 .menu-principal li a:hover {
-    color: #8fc19e;
+    color: var(--color-secondary-main);
 }
 
 /* Submenu Dropdown Oculto por padrão */
@@ -136,12 +163,12 @@ header img {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #ffffff;
+    background-color: var(--color-neutral-white);
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     border-radius: 4px;
     padding: 10px 0;
     min-width: 160px;
-    display: none; /* Ocultação sintática */
+    display: none; 
     z-index: 10;
 }
 
@@ -152,31 +179,30 @@ header img {
 .dropdown li a {
     font-size: 14px;
     font-weight: 500;
-    color: #2c3e50;
+    color: var(--color-neutral-dark);
 }
 
-/* Disparador do Dropdown via Hover */
-.has-dropdown:hover .dropdown {
+/* Disparador do Dropdown via Hover ou Foco interno (Acessível) */
+.has-dropdown:hover .dropdown,
+.has-dropdown:focus-within .dropdown {
     display: block;
 }
 
-/*= RESPONSIVIDADE INTERATIVA (MUDANÇA GERAL NO SCRIPT MOBILE) =*/
+/*= RESPONSIVIDADE INTERATIVA COM CLASSES ACESSÍVEIS =*/
 @media (max-width: 768px) {
-    /* Exibe o botão de hambúrguer */
     .menu-hamburger {
         display: flex;
     }
 
-    /* Transforma o Menu em uma barra oculta vertical absoluta */
     nav {
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: #ffffff;
-        border-bottom: 2px solid #8fc19e;
-        max-height: 0; /* Começa recolhido */
-        overflow: hidden; /* Esconde os links */
+        background-color: var(--color-neutral-white);
+        border-bottom: 2px solid var(--color-secondary-main);
+        max-height: 0; 
+        overflow: hidden; 
         transition: max-height 0.4s ease-in-out;
         z-index: 99;
     }
@@ -192,34 +218,31 @@ header img {
         border-bottom: 1px solid #f1f5f9;
     }
 
-    /* Desativa o posicionamento absoluto do dropdown no celular (vira lista simples expandida) */
     .dropdown {
         position: static;
         box-shadow: none;
         padding-left: 15px;
         padding-top: 10px;
-        display: block; /* Fica sempre visível dentro do menu aberto */
-        background-color: #f8f9fa;
+        display: block; 
+        background-color: var(--color-neutral-light);
     }
 
-    /* ACIONAMENTO DO CHECKBOX HACK (INTERATIVIDADE PURA CSS) */
-    /* Quando clicado, expande a altura máxima do menu nav */
-    .menu-checkbox:checked ~ nav {
+    /* ALTERAÇÃO AQUI: Gatilho através da classe controlada pelo JavaScript */
+    nav.menu-aberto {
         max-height: 400px; 
     }
 
-    /* Efeito visual de rotação nas linhas do hambúrguer ao abrir (Vira um "X") */
-    .menu-checkbox:checked ~ .menu-hamburger span:nth-child(1) {
+    /* Transformação do botão em "X" baseada no atributo ARIA alterado pelo JS */
+    [aria-expanded="true"] span:nth-child(1) {
         transform: translateY(9px) rotate(45deg);
     }
-    .menu-checkbox:checked ~ .menu-hamburger span:nth-child(2) {
+    [aria-expanded="true"] span:nth-child(2) {
         opacity: 0;
     }
-    .menu-checkbox:checked ~ .menu-hamburger span:nth-child(3) {
+    [aria-expanded="true"] span:nth-child(3) {
         transform: translateY(-9px) rotate(-45deg);
     }
 }
-
 /* Formatação base para as seções normais */
 section {
     margin-bottom: 40px;
@@ -230,23 +253,23 @@ section {
 #voluntariado, 
 #doacoesmateriais,
 #contato-rapido {
-    background-color: #ffffff;
+    background-color: var(--color-neutral-white);
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); /* Sombra suave para efeito de card */
-    border-left: 5px solid #1a4473; /* Barra lateral decorativa em Azul */
+    border-left: 5px solid var(--color-primary-dark); /* Barra lateral decorativa em Azul */
     margin-bottom: 30px; /* Espaçamento uniforme entre as caixas */
 }
 
 h1, .destaque1 {
-    color: #1a4473;
+    color: var(--color-primary-dark);
     font-size: var(--font-size-h1);
     margin-bottom: 15px;
     font-weight: 700;
 }
 
 h2, .destaque2 {
-    color: #1a4473;
+    color: var(--color-primary-dark);
     font-size: var(--font-size-h2);
     margin-bottom: 15px;
     margin-top: 0; /* Reseta para alinhar perfeitamente no topo do card */
@@ -254,14 +277,14 @@ h2, .destaque2 {
 
 p {
     margin-bottom: 15px;
-    color: #555555;
+    color: var(--color-neutral-dark); /* Atualizado para garantir contraste estável */
     font-size: var(--font-size-body);
 }
 
 ul {
     list-style-position: inside;
     margin-bottom: 20px;
-    color: #555555;
+    color: var(--color-neutral-dark);
 }
 
 ul li {
@@ -269,7 +292,7 @@ ul li {
 }
 
 strong {
-    color: #1a4473;
+    color: var(--color-primary-dark);
 }
 
 .imagem-institucional img,
@@ -285,8 +308,8 @@ strong {
 /* Botões para chamada de ação */
 main a {
     display: inline-block;
-    background-color: #1a4473;
-    color: #ffffff;
+    background-color: var(--color-primary-dark);
+    color: var(--color-neutral-white);
     padding: 10px 22px;
     text-decoration: none;
     border-radius: 6px;
@@ -296,9 +319,10 @@ main a {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* [CORREÇÃO WCAG]: Alterado para manter alto contraste no hover (Texto escuro sobre fundo claro) */
 main a:hover {
-    background-color: #8fc19e;
-    color: #ffffff;
+    background-color: var(--color-secondary-main);
+    color: var(--color-primary-dark);
 }
 
 /* Caixa de contato rápido da página inicial */
@@ -317,7 +341,7 @@ main a:hover {
 }
 
 form {
-    background-color: #ffffff;
+    background-color: var(--color-neutral-white);
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -333,7 +357,7 @@ fieldset {
 
 legend {
     font-weight: 700;
-    color: #1a4473;
+    color: var(--color-primary-dark);
     padding: 0 10px;
     font-size: 18px;
 }
@@ -359,13 +383,14 @@ input[type="date"] {
     border: 1px solid #cbd5e1;
     border-radius: 6px;
     font-size: var(--font-size-body);
-    color: #333333;
-    outline: none;
+    color: var(--color-neutral-dark);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Estilo focado em teclado unificado via :focus-visible nas configurações iniciais */
 input:focus {
-    border-color: #1a4473;
+    outline: none;
+    border-color: var(--color-primary-dark);
     box-shadow: 0 0 0 3px rgba(26, 68, 115, 0.15);
 }
 
@@ -382,8 +407,8 @@ input[type="radio"] + label {
 }
 
 button[type="submit"] {
-    background-color: #1a4473;
-    color: #ffffff;
+    background-color: var(--color-primary-dark);
+    color: var(--color-neutral-white);
     border: none;
     padding: 14px 28px;
     font-size: var(--font-size-body);
@@ -394,12 +419,14 @@ button[type="submit"] {
     transition: background-color 0.3s ease;
 }
 
+/* [CORREÇÃO WCAG]: Corrigido contraste do texto do botão ao sofrer hover */
 button[type="submit"]:hover {
-    background-color: #8fc19e;
+    background-color: var(--color-secondary-main);
+    color: var(--color-primary-dark);
 }
 
 footer {
-    background-color: #ffffff;
+    background-color: var(--color-neutral-white);
     text-align: center;
     padding: 20px;
     border-top: 1px solid #e9ecef;
@@ -408,19 +435,14 @@ footer {
 
 footer p {
     font-size: 14px;
-    color: #777777;
+    color: var(--color-neutral-medium);
     margin-bottom: 0;
 }
 
 /*= RESPONSIVIDADE (MOBILE) =*/
 @media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-
-    nav ul {
+    .header-container {
+        flex-direction: row; /* Mantém logo e menu hambúrguer na mesma linha */
         gap: 15px;
     }
 
@@ -435,253 +457,266 @@ footer p {
     .dados-contato strong {
         margin-bottom: 2px;
     }
-    
-    form, #doacoes, #voluntariado, #doacoesmateriais {
-        padding: 20px 15px;
-    }
+}
+form, #doacoes, #voluntariado, #doacoesmateriais {
+    padding: 20px 15px;
 }
 
 /*= EFEITOS DE VALIDAÇÃO DE FORMULÁRIO (HTML5 & CSS TRICKS) =*/
 
 /* Container do campo para controle de posicionamento */
 .campo-validacao {
-    position: relative;
-    margin-bottom: 25px;
+position: relative;
+margin-bottom: 25px;
 }
 
 /* Oculta a mensagem de erro por padrão */
 .mensagem-erro {
-    display: none;
-    color: var(--color-feedback-error); /* Vermelho padrão de erro */
-    font-size: var(--font-size-small);
-    font-weight: 600;
-    margin-top: 5px;
+display: none;
+color: var(--color-feedback-error); /* Vermelho padrão de erro */
+font-size: var(--font-size-small);
+font-weight: 600;
+margin-top: 5px;
 }
 
 input:user-invalid {
-    border-color: var(--color-feedback-error) !important;
-    background-color: #fff8f8; /* Leve fundo rosado */
+border-color: var(--color-feedback-error) !important;
+background-color: var(--color-feedback-errorfundo); /* Leve fundo rosado */
 }
 
 /* Mostra a mensagem de erro específica do campo inválido */
 input:user-invalid ~ .mensagem-erro {
-    display: block;
+display: block;
 }
 
 input:not(:placeholder-shown):valid {
-    border-color: var(--color-feedback-sucesso) !important; /* Verde padrão de sucesso */
-    background-color: var(--color-feedback-sucesso-fundo); /* Leve fundo esverdeado */
+border-color: var(--color-feedback-sucesso) !important; /* Verde padrão de sucesso */
+background-color: var(--color-feedback-sucesso-fundo); /* Leve fundo esverdeado */
 }
 
 /* Garante que as bordas voltem ao normal enquanto o usuário limpa o campo */
 input:placeholder-shown {
-    border-color: #cbd5e1;
-    background-color: #ffffff;
+border-color: #cbd5e1;
+background-color: #ffffff;
 }
 
 /*= TELA DE CONFIRMAÇÃO DE CADASTRO =*/
 
 /* Reseta o alinhamento padrão e foca a atenção no centro da tela */
 .tela-confirmacao {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 80vh;
-    text-align: center;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+min-height: 80vh;
+text-align: center;
 }
 
 /* Container relativo que serve de âncora para o posicionamento absoluto do texto */
 .wrapper-logo-interativo {
-    position: relative;
-    width: 100%;
-    max-width: 450px; /* Tamanho confortável para visualização do logotipo */
-    margin: 0 auto;
+position: relative;
+width: 100%;
+max-width: 450px; /* Tamanho confortável para visualização do logotipo */
+margin: 0 auto;
 }
 
 /* O logotipo assume o controle de largura total do wrapper */
 .logo-sucesso {
-    width: 100%;
-    height: auto;
-    display: block;
+width: 100%;
+height: auto;
+display: block;
 }
 
 /* Camada posicional que coloca o texto perfeitamente centralizado no coração */
 .caixa-mensagem-coracao {
-    position: absolute;
-    /* Coordenadas calculadas com base nas proporções do design do logo */
-    top: 46%; 
-    left: 49%;
-    transform: translate(-50%, -50%);
-    
-    width: 130px; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+position: absolute;
+/* Coordenadas calculadas com base nas proporções do design do logo */
+top: 46%; 
+left: 49%;
+transform: translate(-50%, -50%);
+
+width: 130px; 
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
 /* Estilização do texto interno */
 .caixa-mensagem-coracao p {
-    color: #ffffff; 
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 1.2;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 0; 
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
+color: #ffffff; 
+font-size: 15px;
+font-weight: 700;
+line-height: 1.2;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+margin-bottom: 0; 
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
 }
 
 /* Botão de retorno estilizado */
 .acoes-confirmacao {
-    margin-top: 40px;
+margin-top: 40px;
 }
 
 .btn-voltar {
-    background-color: #1a4473;
-    color: #ffffff;
-    padding: 12px 30px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
+display: inline-block;
+background-color: var(--color-primary-dark);
+color: var(--color-neutral-white);
+padding: 12px 30px;
+border-radius: 6px;
+text-decoration: none;
+font-weight: 600;
+transition: background-color 0.3s ease;
 }
 
+/* [CORREÇÃO WCAG]: Alterado para manter alto contraste no hover (Texto escuro sobre fundo claro) */
 .btn-voltar:hover {
-    background-color: #8fc19e;
-    color: #ffffff;
+background-color: var(--color-secondary-main);
+color: var(--color-primary-dark);
 }
 
 /*= Ajuste para telas mobile muito pequenas =*/
 @media (max-width: 400px) {
-    .wrapper-logo-interativo {
-        max-width: 320px;
-    }
-    .caixa-mensagem-coracao {
-        width: 95px;
-    }
-    .caixa-mensagem-coracao p {
-        font-size: 11px;
-    }
+.wrapper-logo-interativo {
+    max-width: 320px;
+}
+.caixa-mensagem-coracao {
+    width: 95px;
+}
+.caixa-mensagem-coracao p {
+    font-size: 11px;
+}
 }
 
 /* ==========================================================================
-   = COMPONENTES DE FEEDBACK, MODAIS, ALERTAS E BADGES (ETAPA DE COMPROVAÇÃO) =
-   ========================================================================== */
+= COMPONENTES DE FEEDBACK, MODAIS, ALERTAS E BADGES (ETAPA DE COMPROVAÇÃO) =
+========================================================================== */
 
 /* 1. Estilização do Modal/Toast de Sucesso */
 .modal-feedback-sucesso {
-    background-color: #ffffff;
-    padding: 35px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    border-top: 5px solid var(--color-feedback-sucesso); /* Barra superior verde sinalizando sucesso */
-    max-width: 500px;
-    width: 100%;
-    margin-bottom: 25px;
-    text-align: center;
+background-color: var(--color-neutral-white);
+padding: 35px;
+border-radius: 12px;
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+border-top: 5px solid var(--color-feedback-sucesso); /* Barra superior verde sinalizando sucesso */
+max-width: 500px;
+width: 100%;
+margin-bottom: 25px;
+text-align: center;
 }
 
 /* 2. Caixa de Alerta Configurada (Feedback Contextual) */
 .alerta-informativo {
-    background-color: #e6f0fa; /* --color-primary-light (Azul claro de avisos) */
-    border-left: 4px solid #1a4473; /* --color-primary-dark (Azul fechado) */
-    padding: 15px 20px;
-    border-radius: 6px;
-    max-width: 500px;
-    width: 100%;
-    text-align: left;
-    margin-bottom: 30px;
-	margin-top: 30px;
+background-color: var(--color-primary-light); /* Azul claro de avisos */
+border-left: 4px solid var(--color-primary-dark); /* Azul fechado */
+padding: 15px 20px;
+border-radius: 6px;
+max-width: 500px;
+width: 100%;
+text-align: left;
+margin-bottom: 30px;
+margin-top: 30px;
 }
 
 .alerta-informativo strong {
-    color: #1a4473;
-    display: block;
-    margin-bottom: 5px;
-    font-size: 14px;
+color: var(--color-primary-dark);
+display: block;
+margin-bottom: 5px;
+font-size: 14px;
 }
 
 .alerta-informativo p {
-    color: #2c3e50; /* Grafite escuro para leitura confortável */
-    font-size: 13.5px;
-    margin-bottom: 0;
-    line-height: 1.5;
+color: var(--color-neutral-dark); /* Grafite escuro para leitura confortável */
+font-size: 13.5px;
+margin-bottom: 0;
+line-height: 1.5;
 }
 
 /* 3. Categorização por Etiquetas (Badges Semânticas) */
 .container-badges {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 15px;
+display: flex;
+justify-content: center;
+gap: 10px;
+margin-top: 15px;
 }
 
 .badge {
-    display: inline-block;
-    padding: 4px 12px;
-    font-size: 12px;
-    font-weight: 700;
-    border-radius: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+display: inline-block;
+padding: 4px 12px;
+font-size: 12px;
+font-weight: 700;
+border-radius: 20px;
+text-transform: uppercase;
+letter-spacing: 0.5px;
 }
 
 /* Badge Azul para identificar a categoria */
 .badge-apoio {
-    background-color: #e6f0fa;
-    color: #1a4473;
-    border: 1px solid #245e9e;
+background-color: var(--color-primary-light);
+color: var(--color-primary-dark);
+border: 1px solid var(--color-primary-main);
 }
 
 /* Badge Verde Suave para identificar o status do processo */
 .badge-status {
-    background-color: var(--color-feedback-sucesso-fundo);
-    color: var(--color-feedback-sucesso);
-    border: 1px solid #8fc19e;
+background-color: var(--color-feedback-sucesso-fundo);
+color: var(--color-feedback-sucesso);
+border: 1px solid var(--color-secondary-main);
 }
 
-/* Esconde o checkbox */
-.modal-checkbox { display: none; }
-
-/* Overlay e Caixa do Modal (Ocultos por padrão) */
+/* Overlay e Caixa do Modal (Ocultos por padrão - Controlados por classe JS e não Checkbox) */
 .modal-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background-color: rgba(44, 62, 80, 0.7);
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; pointer-events: none;
-    transition: opacity 0.3s ease;
-    z-index: 999;
+position: fixed;
+top: 0; left: 0; width: 100vw; height: 100vh;
+background-color: rgba(44, 62, 80, 0.7);
+display: flex; align-items: center; justify-content: center;
+opacity: 0; pointer-events: none;
+transition: opacity 0.3s ease;
+z-index: 999;
 }
 
 .modal-feedback-sucesso {
-    background: #ffffff; padding: 30px; border-radius: 8px;
-    max-width: 400px; width: 100%; text-align: center;
-    border-top: 5px solid var(--color-feedback-sucesso); position: relative;
-    transform: scale(0.9); transition: transform 0.3s ease;
+background: var(--color-neutral-white); padding: 30px; border-radius: 8px;
+max-width: 400px; width: 100%; text-align: center;
+border-top: 5px solid var(--color-feedback-sucesso); position: relative;
+transform: scale(0.9); transition: transform 0.3s ease;
 }
 
-/* Quando o checkbox é ativado, exibe o modal na mesma tela */
-.modal-checkbox:checked ~ .modal-overlay {
-    opacity: 1;
-    pointer-events: auto;
+/* [MIGRAÇÃO DE CLASSES ACESSÍVEIS]: Gatilho nativo JS trocando o seletor antigo do hack */
+.modal-overlay.modal-ativo {
+opacity: 1;
+pointer-events: auto;
 }
-.modal-checkbox:checked ~ .modal-overlay .modal-feedback-sucesso {
-    transform: scale(1);
+.modal-overlay.modal-ativo .modal-feedback-sucesso {
+transform: scale(1);
 }
 
 /* Estilos de apoio simples */
-.btn-fechar-modal { position: absolute; top: 10px; right: 15px; font-size: var(--font-size-h2); cursor: pointer; color: #aaa; }
+.btn-fechar-modal { position: absolute; top: 10px; right: 15px; font-size: var(--font-size-h2); cursor: pointer; color: #aaa; background: none; border: none; }
 .btn-fechar-modal:hover { color: var(--color-feedback-error); }
-.btn-voltar-inicio { display: inline-block; margin-top: 15px; background: #1a4473; color: #fff; padding: 8px 20px; border-radius: 4px; text-decoration: none; font-size: 14px; }
+.btn-voltar-inicio { display: inline-block; margin-top: 15px; background: var(--color-primary-dark); color: #fff; padding: 8px 20px; border-radius: 4px; text-decoration: none; font-size: 14px; }
+.btn-voltar-inicio:hover { background-color: var(--color-secondary-main); color: var(--color-primary-dark); }
 
 /* Classes de validação controladas pelo JavaScript */
 .input-erro {
-    border-color: var(--color-feedback-error) !important;
-    background-color: var(--color-feedback-errorfundo) !important;
+border-color: var(--color-feedback-error) !important;
+background-color: var(--color-feedback-errorfundo) !important;
 }
 .input-sucesso {
-    border-color: var(--color-feedback-sucesso) !important;
-    background-color: var(--color-feedback-sucesso-fundo) !important;
+border-color: var(--color-feedback-sucesso) !important;
+background-color: var(--color-feedback-sucesso-fundo) !important;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    z-index: 100;
+    transition: top 0.2s;
+}
+.skip-link:focus {
+    top: 0;
 }

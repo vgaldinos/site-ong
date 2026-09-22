@@ -3,29 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONG Mãos que Acolhem - SPA</title>
+    <title>ONG Mãos que Acolhem</title>
     <link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/sweetalert2.min.css">
+    <link rel="stylesheet" href="css/sweetalert2.all.min.css">
 </head>
 <body>
 
-    <!-- Estrutura Fixa Global: Cabeçalho -->
+    <!-- Link de Acessibilidade: Salto para o Conteúdo Principal -->
+    <a href="#app" class="skip-link">Pular para o conteúdo principal</a>
+
     <header>
         <div class="header-container">
             <img src="imagens/logo.png" alt="Logotipo oficial da ONG Mãos que Acolhem">
-            <input type="checkbox" id="menu-toggle" class="menu-checkbox">
-            <label for="menu-toggle" class="menu-hamburger">
+            
+            <button id="menu-button" class="menu-hamburger" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu de navegação">
                 <span></span>
                 <span></span>
                 <span></span>
-            </label>
+            </button>
 
-            <nav>
-                <ul class="menu-principal">
+            <nav id="nav-principal" aria-label="Navegação principal">
+                <ul id="menu-principal" class="menu-principal">
                     <li><a href="#inicio" class="nav-link">Início</a></li>
                     <li class="has-dropdown">
-                        <a href="#projetos" class="nav-link">Projetos Sociais</a>
-                        <ul class="dropdown">
+                        <a href="#projetos" class="nav-link" aria-haspopup="true" aria-expanded="false">Projetos Sociais</a>
+                        <ul class="dropdown" aria-label="Submenu Projetos Sociais">
                             <li><a href="#projetos?sec=doacoes" class="nav-link">Doações</a></li>
                             <li><a href="#projetos?sec=voluntariado" class="nav-link">Voluntariado</a></li>
                             <li><a href="#projetos?sec=materiais" class="nav-link">Materiais</a></li>
@@ -38,20 +40,15 @@
     </header>
 
     <!-- Container Dinâmico: Onde o JS injetará as telas -->
-    <main id="app"></main>
+    <!-- Adicionado tabindex="-1" para que o link de salto consiga mover o foco do teclado para cá -->
+    <main id="app" tabindex="-1" aria-live="polite"></main>
 
-    <!-- Estrutura Fixa Global: Rodapé -->
     <footer>
         <p>&copy; 2026 ONG Mãos que Acolhem - Todos os direitos reservados.</p>
     </footer>
 
-    <!-- ==========================================================
-       CARREGAMENTO DOS SCRIPTS NO LOCAL ADEQUADO (FIM DO BODY)
-       ========================================================== -->
-    <!-- 1. Biblioteca Externa SweetAlert2 via CDN Oficial -->
-	<script src="js/sweetalert2.all.min.js "></script>
+    <script src="js/sweetalert2.all.min.js"></script>
 
-    <!-- 2. Seus scripts locais carregados na ordem de dependência -->
     <script src="js/projetos.js"></script>
     <script src="js/cadastro.js"></script>
     <script src="js/index.js"></script>
