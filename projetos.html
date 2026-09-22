@@ -7,17 +7,32 @@
     <link rel="stylesheet" href="./style.css">	
 </head>
 <body>
+	<header>
+		<div class="header-container">
+			<img src="imagens/logo.png" alt="Logotipo oficial da ONG Mãos que Acolhem">
+			<input type="checkbox" id="menu-toggle" class="menu-checkbox">
+			<label for="menu-toggle" class="menu-hamburger">
+				<span></span>
+				<span></span>
+				<span></span>
+			</label>
 
-    <header>
-        <img src="imagens/logo.png" alt="Logotipo oficial da ONG Mãos que Acolhem">
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="projetos.html">Projetos Sociais</a></li>
-                <li><a href="cadastro.html">Seja um Apoiador</a></li>
-            </ul>
-        </nav>
-    </header>
+			<nav>
+				<ul class="menu-principal">
+					<li><a href="index.html">Início</a></li>
+					<li class="has-dropdown">
+						<a href="projetos.html">Projetos Sociais</a>
+						<ul class="dropdown">
+							<li><a href="projetos.html#doacoes">Doações</a></li>
+							<li><a href="projetos.html#voluntariado">Voluntariado</a></li>
+							<li><a href="projetos.html#doacoesmateriais">Materiais</a></li>
+						</ul>
+					</li>
+					<li><a href="cadastro.html">Seja um Apoiador</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
 
     <main>
         <section id="projetos">

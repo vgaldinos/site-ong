@@ -7,23 +7,39 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+	<header>
+		<div class="header-container">
+			<img src="imagens/logo.png" alt="Logotipo oficial da ONG Mãos que Acolhem">
+			<input type="checkbox" id="menu-toggle" class="menu-checkbox">
+			<label for="menu-toggle" class="menu-hamburger">
+				<span></span>
+				<span></span>
+				<span></span>
+			</label>
 
-    <header>
-        <img src="imagens/logo.png" alt="Logotipo oficial da ONG Mãos que Acolhem">
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="projetos.html">Projetos Sociais</a></li>
-                <li><a href="cadastro.html">Seja um Apoiador</a></li>
-            </ul>
-        </nav>
-    </header>
+			<nav>
+				<ul class="menu-principal">
+					<li><a href="index.html">Início</a></li>
+					<li class="has-dropdown">
+						<a href="projetos.html">Projetos Sociais</a>
+						<ul class="dropdown">
+							<li><a href="projetos.html#doacoes">Doações</a></li>
+							<li><a href="projetos.html#voluntariado">Voluntariado</a></li>
+							<li><a href="projetos.html#doacoesmateriais">Materiais</a></li>
+						</ul>
+					</li>
+					<li><a href="cadastro.html">Seja um Apoiador</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
 
     <main>
         <h1>Ficha de Registro de Novo Apoiador</h1>
         <p>Preencha os campos abaixo para formalizar o seu vínculo com a nossa organização.</p>
 
-		<form action="confirmacao.html" method="GET">
+		<!--form action="confirmacao.html" method="GET"-->
+		<form action="#">
             <fieldset>
                 <legend>Dados Pessoais</legend>
 				<p class="campo-validacao">
@@ -83,11 +99,42 @@
                     <label for="opcao_material">Desejo fazer Contribuição Material</label>
                 </p>
             </fieldset>
-            <p>
-                <button type="submit">Enviar Registro</button>
-            </p>
-        </form>
-    </main>
+			<p>
+				<button type="submit" class="btn-enviar-form">Enviar Registro</button>
+			</p>
+		</form>
+
+		<input type="checkbox" id="modal-confirmacao" class="modal-checkbox" checked>
+		<!--input type="checkbox" id="modal-confirmacao" class="modal-checkbox"-->
+		
+		<div class="modal-overlay">
+			<div class="modal-feedback-sucesso">
+				<!-- Botão de fechar que desmarca o checkbox e volta para o formulário -->
+				<label for="modal-confirmacao" class="btn-fechar-modal">&times;</label>
+				
+				<div class="wrapper-logo-interativo">
+					<img src="imagens/logo.png" alt="Logotipo oficial da ONG Mãos que Acolhem" class="logo-sucesso">
+					<div class="caixa-mensagem-coracao"><p>Sucesso!</p></div>
+				</div>
+				
+				<h2>Cadastro Enviado!</h2>
+				<p>Seus dados foram salvos com integridade.</p>
+				
+				<div class="container-badges">
+					<span class="badge badge-apoio">Apoiador Ativo</span>
+					<span class="badge badge-status">Aguardando Triagem</span>
+				</div>
+
+				<div class="alerta-informativo">
+					<strong>Informação:</strong> 
+					<p>Enviamos as instruções para o seu e-mail.</p>
+				</div>
+				
+				<!-- Link simples que limpa a tela e simula o retorno ao início -->
+				<a href="index.html" class="btn-voltar-inicio">Voltar para o Início</a>
+			</div>
+		</div>
+	</main>
     <footer>
         <p>&copy; 2026 ONG Mãos que Acolhem - Todos os direitos reservados.</p>
     </footer>

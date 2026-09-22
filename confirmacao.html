@@ -7,19 +7,44 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+
+    <!-- Container Geral da Tela de Confirmação -->
     <main class="tela-confirmacao">
-        <div class="wrapper-logo-interativo">
-            <img src="imagens/logo.png" alt="Logotipo oficial da ONG Mãos que Acolhem" class="logo-sucesso">
+        
+        <!-- ELEMENTO 1: COMPONENTE DE MODAL / TOAST CENTRALIZADO -->
+        <div class="modal-feedback-sucesso">
+            <div class="wrapper-logo-interativo">
+                <img src="imagens/logo.png" alt="Logotipo oficial da ONG Mãos que Acolhem" class="logo-sucesso">
+                <div class="caixa-mensagem-coracao">
+                    <p>Sucesso!</p>
+                </div>
+            </div>
+            <h2>Cadastro Enviado!</h2>
+            <p>Seus dados foram processados com integridade na nossa base de dados.</p>
             
-            <div class="caixa-mensagem-coracao">
-                <p>Cadastro enviado!</p>
+            <!-- ELEMENTO 2: CATEGORIZAÇÃO POR ETIQUETAS (BADGES SEMÂNTICAS) -->
+            <div class="container-badges">
+                <span class="badge badge-apoio">Apoiador Ativo</span>
+                <span class="badge badge-status">Aguardando Triagem</span>
             </div>
         </div>
 
-        <p class="destaque2">
-            Você será contatado em Breve, Obrigado!
-        </p>
-        <a href="index.html" class="btn-voltar"> Voltar para o Início </a>
+        <!-- ELEMENTO 3: CAIXA DE ALERTA CONFIGURADA (FEEDBACK CONTEXTUAL) -->
+        <div class="alerta-informativo">
+            <strong>Informação Importante:</strong> 
+            <p>Enviamos um e-mail de boas-vindas com as instruções para o seu primeiro dia de engajamento. Caso não encontre na caixa de entrada, verifique a pasta de spam.</p>
+        </div>
+
+        <!-- Botão de Ação para retornar ao fluxo principal -->
+        <div class="acoes-confirmacao">
+            <a href="index.html" class="btn-voltar"> Voltar para o Início </a>
+        </div>
+
     </main>
+
+    <footer>
+        <p>&copy; 2026 ONG Mãos que Acolhem - Todos os direitos reservados.</p>
+    </footer>
+
 </body>
 </html>
