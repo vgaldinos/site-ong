@@ -12,7 +12,10 @@
     --color-neutral-light: #f8f9fa;  /* Off-White: Fundo principal da página (Conforto visual) */
     --color-neutral-white: #ffffff;  /* Branco Puro: Fundo de cards, campos e blocos isolados */
     
+    --color-feedback-sucesso: #28a745; /* Verde Sucesso Nativo: Estados de validação positiva */
+	--color-feedback-sucesso-fundo: #f6fff6;
     --color-feedback-error: #dc3545; /* Vermelho Erro: Alertas e campos inválidos */
+	--color-feedback-errorfundo: #fff8f8;
 
     /* 2. ESCALA TIPOGRÁFICA (5 níveis hierárquicos baseados em rem) */
     --font-size-h1: 2.000rem;        /* 32px - Título principal da página */
@@ -119,7 +122,7 @@ header img {
     text-decoration: none;
     color: #1a4473;
     font-weight: 600;
-    font-size: 16px;
+    font-size: var(--font-size-body);
     transition: color 0.3s ease;
 }
 
@@ -237,14 +240,14 @@ section {
 
 h1, .destaque1 {
     color: #1a4473;
-    font-size: 32px;
+    font-size: var(--font-size-h1);
     margin-bottom: 15px;
     font-weight: 700;
 }
 
 h2, .destaque2 {
     color: #1a4473;
-    font-size: 24px;
+    font-size: var(--font-size-h2);
     margin-bottom: 15px;
     margin-top: 0; /* Reseta para alinhar perfeitamente no topo do card */
 }
@@ -252,7 +255,7 @@ h2, .destaque2 {
 p {
     margin-bottom: 15px;
     color: #555555;
-    font-size: 16px;
+    font-size: var(--font-size-body);
 }
 
 ul {
@@ -355,7 +358,7 @@ input[type="date"] {
     padding: 10px 14px;
     border: 1px solid #cbd5e1;
     border-radius: 6px;
-    font-size: 16px;
+    font-size: var(--font-size-body);
     color: #333333;
     outline: none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -383,7 +386,7 @@ button[type="submit"] {
     color: #ffffff;
     border: none;
     padding: 14px 28px;
-    font-size: 16px;
+    font-size: var(--font-size-body);
     font-weight: 600;
     border-radius: 6px;
     cursor: pointer;
@@ -449,14 +452,14 @@ footer p {
 /* Oculta a mensagem de erro por padrão */
 .mensagem-erro {
     display: none;
-    color: #dc3545; /* Vermelho padrão de erro */
-    font-size: 13px;
+    color: var(--color-feedback-error); /* Vermelho padrão de erro */
+    font-size: var(--font-size-small);
     font-weight: 600;
     margin-top: 5px;
 }
 
 input:user-invalid {
-    border-color: #dc3545 !important;
+    border-color: var(--color-feedback-error) !important;
     background-color: #fff8f8; /* Leve fundo rosado */
 }
 
@@ -466,8 +469,8 @@ input:user-invalid ~ .mensagem-erro {
 }
 
 input:not(:placeholder-shown):valid {
-    border-color: #28a745 !important; /* Verde padrão de sucesso */
-    background-color: #f6fff6; /* Leve fundo esverdeado */
+    border-color: var(--color-feedback-sucesso) !important; /* Verde padrão de sucesso */
+    background-color: var(--color-feedback-sucesso-fundo); /* Leve fundo esverdeado */
 }
 
 /* Garante que as bordas voltem ao normal enquanto o usuário limpa o campo */
@@ -572,7 +575,7 @@ input:placeholder-shown {
     padding: 35px;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    border-top: 5px solid #28a745; /* Barra superior verde sinalizando sucesso */
+    border-top: 5px solid var(--color-feedback-sucesso); /* Barra superior verde sinalizando sucesso */
     max-width: 500px;
     width: 100%;
     margin-bottom: 25px;
@@ -633,8 +636,8 @@ input:placeholder-shown {
 
 /* Badge Verde Suave para identificar o status do processo */
 .badge-status {
-    background-color: #f6fff6;
-    color: #28a745;
+    background-color: var(--color-feedback-sucesso-fundo);
+    color: var(--color-feedback-sucesso);
     border: 1px solid #8fc19e;
 }
 
@@ -655,7 +658,7 @@ input:placeholder-shown {
 .modal-feedback-sucesso {
     background: #ffffff; padding: 30px; border-radius: 8px;
     max-width: 400px; width: 100%; text-align: center;
-    border-top: 5px solid #28a745; position: relative;
+    border-top: 5px solid var(--color-feedback-sucesso); position: relative;
     transform: scale(0.9); transition: transform 0.3s ease;
 }
 
@@ -669,7 +672,16 @@ input:placeholder-shown {
 }
 
 /* Estilos de apoio simples */
-.btn-fechar-modal { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: #aaa; }
-.btn-fechar-modal:hover { color: #dc3545; }
+.btn-fechar-modal { position: absolute; top: 10px; right: 15px; font-size: var(--font-size-h2); cursor: pointer; color: #aaa; }
+.btn-fechar-modal:hover { color: var(--color-feedback-error); }
 .btn-voltar-inicio { display: inline-block; margin-top: 15px; background: #1a4473; color: #fff; padding: 8px 20px; border-radius: 4px; text-decoration: none; font-size: 14px; }
 
+/* Classes de validação controladas pelo JavaScript */
+.input-erro {
+    border-color: var(--color-feedback-error) !important;
+    background-color: var(--color-feedback-errorfundo) !important;
+}
+.input-sucesso {
+    border-color: var(--color-feedback-sucesso) !important;
+    background-color: var(--color-feedback-sucesso-fundo) !important;
+}

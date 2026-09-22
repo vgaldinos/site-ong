@@ -3,70 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONG Mãos que Acolhem - Página Inicial</title>
-    <link rel="stylesheet" href="./style.css">
+    <title>ONG Mãos que Acolhem - SPA</title>
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/sweetalert2.min.css">
 </head>
 <body>
 
-	<header>
-		<div class="header-container">
-			<img src="imagens/logo.png" alt="Logotipo oficial da ONG Mãos que Acolhem">
-			
-			<!-- Elementos do Checkbox Hack para o Menu Mobile -->
-			<input type="checkbox" id="menu-toggle" class="menu-checkbox">
-			<label for="menu-toggle" class="menu-hamburger">
-				<span></span>
-				<span></span>
-				<span></span>
-			</label>
+    <!-- Estrutura Fixa Global: Cabeçalho -->
+    <header>
+        <div class="header-container">
+            <img src="imagens/logo.png" alt="Logotipo oficial da ONG Mãos que Acolhem">
+            <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+            <label for="menu-toggle" class="menu-hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
 
-			<nav>
-				<ul class="menu-principal">
-					<li><a href="index.html">Início</a></li>
-					<li class="has-dropdown">
-						<a href="projetos.html">Projetos Sociais</a>
-						<!-- Submenu Dropdown exigido pelo roteiro -->
-						<ul class="dropdown">
-							<li><a href="projetos.html#doacoes">Doações</a></li>
-							<li><a href="projetos.html#voluntariado">Voluntariado</a></li>
-							<li><a href="projetos.html#doacoesmateriais">Materiais</a></li>
-						</ul>
-					</li>
-					<li><a href="cadastro.html">Seja um Apoiador</a></li>
-				</ul>
-			</nav>
-		</div>
-	</header>
-
-
-    <main>
-        <section id="apresentacao">
-            <h1>Transformando Vidas Através da Solidariedade</h1>
-            <p>Nossa ONG atua ativamente no suporte a comunidades em situação de vulnerabilidade social. Desenvolvemos projetos focados em educação, capacitação profissional e segurança alimentar, buscando construir um futuro mais justo e com igualdade de oportunidades para todos.</p>
-            
-            <div class="imagem-institucional">
-                <img src="imagens/atendimento-comunidade.jpg" alt="Voluntários da ONG sorrindo enquanto entregam materiais escolares e interagem com crianças em uma sala de aula comunitária iluminada.">
-            </div>
-        </section>
-
-        <section id="contato-rapido">
-            <h2>Estabeleça Contato Conosco</h2>
-            <p>Quer fazer parte da nossa missão? Seja um voluntário, parceiro ou doador. Entre em contato conosco pelos canais abaixo:</p>
-            
-            <address class="dados-contato">
-                <ul>
-                    <li><strong>Endereço:</strong> Avenida das Mãos que Acolhem, 123 - Centro, Curitiba - PR</li>
-                    <li><strong>E-mail:</strong> contato@ongmaosqueacolhem.org</li>
-                    <li><strong>Telefone/WhatsApp:</strong> (41) 99999-0000</li>
-                    <li><strong>Horário de Atendimento:</strong> Segunda a Sexta, das 09h às 18h</li>
+            <nav>
+                <ul class="menu-principal">
+                    <li><a href="#inicio" class="nav-link">Início</a></li>
+                    <li class="has-dropdown">
+                        <a href="#projetos" class="nav-link">Projetos Sociais</a>
+                        <ul class="dropdown">
+                            <li><a href="#projetos?sec=doacoes" class="nav-link">Doações</a></li>
+                            <li><a href="#projetos?sec=voluntariado" class="nav-link">Voluntariado</a></li>
+                            <li><a href="#projetos?sec=materiais" class="nav-link">Materiais</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#cadastro" class="nav-link">Seja um Apoiador</a></li>
                 </ul>
-            </address>
-        </section>
-    </main>
+            </nav>
+        </div>
+    </header>
 
+    <!-- Container Dinâmico: Onde o JS injetará as telas -->
+    <main id="app"></main>
+
+    <!-- Estrutura Fixa Global: Rodapé -->
     <footer>
         <p>&copy; 2026 ONG Mãos que Acolhem - Todos os direitos reservados.</p>
     </footer>
+
+    <!-- ==========================================================
+       CARREGAMENTO DOS SCRIPTS NO LOCAL ADEQUADO (FIM DO BODY)
+       ========================================================== -->
+    <!-- 1. Biblioteca Externa SweetAlert2 via CDN Oficial -->
+	<script src="js/sweetalert2.all.min.js "></script>
+
+    <!-- 2. Seus scripts locais carregados na ordem de dependência -->
+    <script src="js/projetos.js"></script>
+    <script src="js/cadastro.js"></script>
+    <script src="js/index.js"></script>
 
 </body>
 </html>

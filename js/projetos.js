@@ -1,0 +1,41 @@
+function renderProjetos() {
+    return `
+        <section id="projetos">
+            <h1>Nossas Frentes de Atuação</h1>
+            <p>Conheça as ações contínuas que desenvolvemos para apoiar e empoderar nossa comunidade local.</p>
+            <div class="imagem-projeto">
+                <img src="imagens/rascunho-projeto.png" alt="Sobre a mesa há um papel com a logomarca sendo mãos opostas segurando um coração...">
+            </div>			
+        </section>
+
+        <section id="doacoes">
+            <h2>Como Ajudar Financeiramente</h2>
+            <p>Sua doação financeira mantém nossos projetos vivos e compra suprimentos essenciais. Contribua através de nossos canais oficiais:</p>
+            <ul>
+                <li><strong>Chave Pix (CNPJ):</strong> 12.345.678/0001-99</li>
+                <li><strong>Banco do Brasil:</strong> Agência 1234-5 | Conta Corrente: 67890-1</li>
+            </ul>
+            <p><a href="#cadastro">Clique aqui para registrar sua doação recorrente</a></p>
+        </section>
+
+        <section id="voluntariado">
+            <h2>Seja um Voluntário</h2>
+            <p>Doe seu tempo e suas habilidades para transformar realidades junto conosco.</p>
+            <ul>
+                <li><strong>Requisitos:</strong> Ter mais de 18 anos e disponibilidade de 4 horas semanais.</li>
+                <li><strong>Áreas necessitadas:</strong> Reforço escolar, triagem de doações e apoio logístico.</li>
+            </ul>
+            <p><a href="#cadastro">Preencha sua ficha de inscrição para voluntariado</a></p>
+        </section>
+
+        <section id="doacoesmateriais">
+            <h2>Campanha de Contribuições Materiais</h2>
+            <p>Arrecadamos permanentemente itens básicos para distribuição imediata às famílias cadastradas.</p>
+            <ul>
+                <li><strong>Materiais elegíveis:</strong> Alimentos não perecíveis, agasalhos, cobertores e kits de higiene.</li>
+                <li><strong>Ponto de coleta:</strong> Entregas diretamente em nossa sede institucional.</li>
+            </ul>
+            <p><a href="#inicio">Veja nosso endereço e horários de funcionamento</a></p>
+        </section>
+    `;
+}
