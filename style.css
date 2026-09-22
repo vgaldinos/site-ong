@@ -1,0 +1,410 @@
+/*= RESET E CONFIGURAÇÕES GERAIS (LARGURA FIXA E CONSISTENTE) =*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333333;
+    background-color: #f8f9fa; /* Fundo cinza bem claro para realçar as caixas */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/*= DEFINIÇÕES PADRÕES GERAIS =*/
+main {                         
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 20px;
+    flex: 1;
+}
+
+header {
+    background-color: #ffffff;
+    border-bottom: 3px solid #8fc19e; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding: 15px 20px;
+    width: 100%;
+}
+
+header > div, 
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px; /* Alinhado perfeitamente com o main */
+    margin: 0 auto;
+}
+
+header img {
+    max-width: 180px;
+    height: auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #1a4473; /* Azul Fechado */
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #8fc19e; /* Muda para o Verde Suave */
+}
+
+/* Formatação base para as seções normais */
+section {
+    margin-bottom: 40px;
+}
+
+/* Transforma as seções específicas de projetos em caixas de destaque */
+#doacoes, 
+#voluntariado, 
+#doacoesmateriais,
+#contato-rapido {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); /* Sombra suave para efeito de card */
+    border-left: 5px solid #1a4473; /* Barra lateral decorativa em Azul */
+    margin-bottom: 30px; /* Espaçamento uniforme entre as caixas */
+}
+
+h1, .destaque1 {
+    color: #1a4473;
+    font-size: 32px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+h2, .destaque2 {
+    color: #1a4473;
+    font-size: 24px;
+    margin-bottom: 15px;
+    margin-top: 0; /* Reseta para alinhar perfeitamente no topo do card */
+}
+
+p {
+    margin-bottom: 15px;
+    color: #555555;
+    font-size: 16px;
+}
+
+ul {
+    list-style-position: inside;
+    margin-bottom: 20px;
+    color: #555555;
+}
+
+ul li {
+    margin-bottom: 8px;
+}
+
+strong {
+    color: #1a4473;
+}
+
+.imagem-institucional img,
+.imagem-projeto img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin: 15px 0 25px 0;
+}
+
+/* Botões para chamada de ação */
+main a {
+    display: inline-block;
+    background-color: #1a4473;
+    color: #ffffff;
+    padding: 10px 22px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+main a:hover {
+    background-color: #8fc19e;
+    color: #ffffff;
+}
+
+/* Caixa de contato rápido da página inicial */
+.dados-contato ul {
+    list-style: none;
+}
+
+.dados-contato ul li {
+    display: flex;
+    margin-bottom: 12px;
+}
+
+.dados-contato strong {
+    min-width: 180px;
+    display: inline-block;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-top: 25px;
+}
+
+fieldset {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+legend {
+    font-weight: 700;
+    color: #1a4473;
+    padding: 0 10px;
+    font-size: 18px;
+}
+
+form p {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #4a5568;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #333333;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+    border-color: #1a4473;
+    box-shadow: 0 0 0 3px rgba(26, 68, 115, 0.15);
+}
+
+input[type="radio"] {
+    margin-right: 8px;
+    transform: scale(1.1);
+    vertical-align: middle;
+}
+
+input[type="radio"] + label {
+    display: inline;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+button[type="submit"] {
+    background-color: #1a4473;
+    color: #ffffff;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #8fc19e;
+}
+
+footer {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #e9ecef;
+    margin-top: auto;
+}
+
+footer p {
+    font-size: 14px;
+    color: #777777;
+    margin-bottom: 0;
+}
+
+/*= RESPONSIVIDADE (MOBILE) =*/
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .dados-contato ul li {
+        flex-direction: column;
+    }
+    
+    .dados-contato strong {
+        margin-bottom: 2px;
+    }
+    
+    form, #doacoes, #voluntariado, #doacoesmateriais {
+        padding: 20px 15px;
+    }
+}
+
+/*= EFEITOS DE VALIDAÇÃO DE FORMULÁRIO (HTML5 & CSS TRICKS) =*/
+
+/* Container do campo para controle de posicionamento */
+.campo-validacao {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+/* Oculta a mensagem de erro por padrão */
+.mensagem-erro {
+    display: none;
+    color: #dc3545; /* Vermelho padrão de erro */
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+input:user-invalid {
+    border-color: #dc3545 !important;
+    background-color: #fff8f8; /* Leve fundo rosado */
+}
+
+/* Mostra a mensagem de erro específica do campo inválido */
+input:user-invalid ~ .mensagem-erro {
+    display: block;
+}
+
+input:not(:placeholder-shown):valid {
+    border-color: #28a745 !important; /* Verde padrão de sucesso */
+    background-color: #f6fff6; /* Leve fundo esverdeado */
+}
+
+/* Garante que as bordas voltem ao normal enquanto o usuário limpa o campo */
+input:placeholder-shown {
+    border-color: #cbd5e1;
+    background-color: #ffffff;
+}
+
+/*= TELA DE CONFIRMAÇÃO DE CADASTRO =*/
+
+/* Reseta o alinhamento padrão e foca a atenção no centro da tela */
+.tela-confirmacao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    text-align: center;
+}
+
+/* Container relativo que serve de âncora para o posicionamento absoluto do texto */
+.wrapper-logo-interativo {
+    position: relative;
+    width: 100%;
+    max-width: 450px; /* Tamanho confortável para visualização do logotipo */
+    margin: 0 auto;
+}
+
+/* O logotipo assume o controle de largura total do wrapper */
+.logo-sucesso {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Camada posicional que coloca o texto perfeitamente centralizado no coração */
+.caixa-mensagem-coracao {
+    position: absolute;
+    /* Coordenadas calculadas com base nas proporções do design do logo */
+    top: 46%; 
+    left: 49%;
+    transform: translate(-50%, -50%);
+    
+    width: 130px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilização do texto interno */
+.caixa-mensagem-coracao p {
+    color: #ffffff; 
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
+}
+
+/* Botão de retorno estilizado */
+.acoes-confirmacao {
+    margin-top: 40px;
+}
+
+.btn-voltar {
+    background-color: #1a4473;
+    color: #ffffff;
+    padding: 12px 30px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn-voltar:hover {
+    background-color: #8fc19e;
+    color: #ffffff;
+}
+
+/*= Ajuste para telas mobile muito pequenas =*/
+@media (max-width: 400px) {
+    .wrapper-logo-interativo {
+        max-width: 320px;
+    }
+    .caixa-mensagem-coracao {
+        width: 95px;
+    }
+    .caixa-mensagem-coracao p {
+        font-size: 11px;
+    }
+}
