@@ -23,7 +23,7 @@ function renderInicio() {
     `;
 }
 
-// 2. Sistema de Rotas da SPA (Gerenciador do DOM)
+// Sistema de Rotas da SPA (Gerenciador do DOM)
 function roteador() {
     const container = document.getElementById('app');
     const hash = window.location.hash || '#inicio';
@@ -92,7 +92,7 @@ function inicializarMenuAcessivel() {
     }
 }
 
-// 3. Inicialização dos Eventos do Navegador
+// Inicialização dos Eventos do Navegador
 window.addEventListener('hashchange', roteador);
 window.addEventListener('DOMContentLoaded', () => {
     roteador();

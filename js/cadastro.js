@@ -73,7 +73,7 @@ function renderCadastro() {
             <div class="modal-feedback-sucesso">
                 <button type="button" id="btn-fechar" class="btn-fechar-modal" aria-label="Fechar janela de confirmação">&times;</button>
                 <div class="wrapper-logo-interativo">
-                    <img src="imagens/logo.png" alt="Logotipo oficial da ONG Mãos que Acolhem" class="logo-sucesso">
+                    <img src="imagens/logo.webp" alt="Logotipo oficial da ONG Mãos que Acolhem" class="logo-sucesso">
                 </div>
                 <h2 id="modal-titulo">Cadastro Enviado!</h2>
                 <p>Seus dados foram salvos com integridade via SPA.</p>
@@ -197,7 +197,7 @@ window.inicializarCadastro = function() {
             // ==========================================================
             if (typeof Swal === 'function') {
                 Swal.fire({
-                    imageUrl: 'imagens/logo.png',
+                    imageUrl: 'imagens/logo.webp',
                     imageWidth: 250,
                     imageAlt: 'Logotipo oficial da ONG Mãos que Acolhem',
                     title: 'Cadastro Enviado!',
